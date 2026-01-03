@@ -1,5 +1,5 @@
 
-//1. feladat 4. commit
+//1. feladat 5. commit
 /** @type {string[]} A fejlec tomb tipusa */
 const headerArr = ["Szerző", "Mű", "Fogalmak"] //fejlec tombbe szervezve
 
@@ -35,8 +35,55 @@ const bodyArr = [ //Az adattal feltoltott objektumok tombbe szervezezve
 ]
 
 console.log(headerArr[0]+" | "+headerArr[1]+" | "+headerArr[2]+" | "+" | ") //fejlec kiiratasa 0ik elem szero elso elem mu masodik elem fogalmak
-console.log(bodyArr[0].author+" | "+bodyArr[0].title+" | "+bodyArr[0].concepts+" | "+bodyArr[0].concepts2+" | ") //elso sor konzolra irasa
-console.log(bodyArr[1].author+" | "+bodyArr[1].title+" | "+bodyArr[1].concepts+" | "+" | ") //masodik sor konzolra irasa
-console.log(bodyArr[2].author+" | "+bodyArr[2].title+" | "+bodyArr[2].concepts+" | "+" | ") //harmadik sor konzolra irasa
-console.log(bodyArr[3].author+" | "+bodyArr[3].title+" | "+bodyArr[3].concepts+" | "+" | ") //negyedik sor konzolra irasa
-console.log(bodyArr[4].author+" | "+bodyArr[4].title+" | "+bodyArr[4].concepts+" | "+bodyArr[4].concepts2+" | ") //otodik sor konzolra irasa
+
+/** @type {string} a valtozo tipusa */
+let appolliniareRow = bodyArr[0].author+" | "+bodyArr[0].title+" | " // lettel letrehozunk egy valtozot mivel valtoztatni szeretnenk az erteket
+if(bodyArr[0].concepts2){ //ha a masodik fogalmak cella is defined
+    appolliniareRow+= bodyArr[0].concepts+" | "+bodyArr[0].concepts2+" | " //a korabbi valtozohoz hozzaadjuk mindket fogalmat
+}
+else{ // egyebkent ha a masodik fogalmak cella undefined 
+    appolliniareRow+= bodyArr[0].concepts+" | "+" | " //a korabbi valtozohoz csak az egyik definialt fogalmat adjuk hozza
+}
+console.log(appolliniareRow) // kiirja az elso sort a konzolra
+
+/** @type {string} a valtozo tipusa */
+let appolliniareSecondRow = bodyArr[1].author+" | "+bodyArr[1].title+" | " // lettel letrehozunk egy valtozot mivel valtoztatni szeretnenk az erteket
+if(bodyArr[1].concepts2){ //ha a masodik fogalmak cella is defined
+    appolliniareSecondRow+= bodyArr[1].concepts+" | "+bodyArr[1].concepts2+" | " //a korabbi valtozohoz hozzaadjuk mindket fogalmat
+}
+else{ // egyebkent ha a masodik fogalmak cella undefined 
+    appolliniareSecondRow+= bodyArr[1].concepts+" | "+" | " //a korabbi valtozohoz csak az egyik definialt fogalmat adjuk hozza
+}
+console.log(appolliniareSecondRow) // kiirja a masodik sort a konzolra
+
+/** @type {string} a valtozo tipusa */
+let thomasMannRow = bodyArr[2].author+" | "+bodyArr[2].title+" | " // lettel letrehozunk egy valtozot mivel valtoztatni szeretnenk az erteket
+if(bodyArr[2].concepts2){ //ha a masodik fogalmak cella is defined
+    thomasMannRow+= bodyArr[2].concepts+" | "+bodyArr[2].concepts2+" | " //a korabbi valtozohoz hozzaadjuk mindket fogalmat
+}
+else{ // egyebkent ha a masodik fogalmak cella undefined 
+    thomasMannRow+= bodyArr[2].concepts+" | "+" | " //a korabbi valtozohoz csak az egyik definialt fogalmat adjuk hozza
+}
+console.log(thomasMannRow) // kiirja a harmadik sort a konzolra
+
+/** @type {string} a valtozo tipusa */
+let franzKafkaRow = bodyArr[3].author+" | "+bodyArr[3].title+" | " // lettel letrehozunk egy valtozot mivel valtoztatni szeretnenk az erteket
+if(bodyArr[3].concepts2){ //ha a masodik fogalmak cella is defined
+    franzKafkaRow+= bodyArr[3].concepts+" | "+bodyArr[3].concepts2+" | " //a korabbi valtozohoz hozzaadjuk mindket fogalmat
+}
+else{ // egyebkent ha a masodik fogalmak cella undefined 
+    franzKafkaRow+= bodyArr[3].concepts+" | "+" | " //a korabbi valtozohoz csak az egyik definialt fogalmat adjuk hozza
+}
+console.log(franzKafkaRow) // kiirja a negyedik sort a konzolra
+
+/** @type {string} a valtozo tipusa */
+let franzKafkaSecondRow = bodyArr[4].author+" | "+bodyArr[4].title+" | " // lettel letrehozunk egy valtozot mivel valtoztatni szeretnenk az erteket
+if(bodyArr[4].concepts2){ //ha a masodik fogalmak cella is defined
+    franzKafkaSecondRow+= bodyArr[4].concepts+" | "+bodyArr[4].concepts2+" | " //a korabbi valtozohoz hozzaadjuk mindket fogalmat
+}
+else{ // egyebkent ha a masodik fogalmak cella undefined 
+    franzKafkaSecondRow+= bodyArr[4].concepts+" | "+" | " //a korabbi valtozohoz csak az egyik definialt fogalmat adjuk hozza
+}
+console.log(franzKafkaSecondRow) // kiirja az otodik sort a konzolra
+
+
