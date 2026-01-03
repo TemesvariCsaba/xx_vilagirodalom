@@ -1,79 +1,46 @@
-// 1. feladat 1. commit
-console.log("| Szerző       | Mű                                | Fogalmak  |           |") //Fejlec kiiratasa konzolra
-console.log("| Appolliniare | A megsebzett galamb és a szökőkút | képvers   | emlékezés |") //elso sor kiiratasa konzolra
-console.log("| Appolliniare | Búcsú                             | avantgárd |           |") //masodik sor kiiratasa konzolra
-console.log("| Thomas Mann  | Mario és a varázsló               | kisregény |           |") //harmadik sor kiiratasa konzolra
-console.log("| Franz Kafka  | A per                             | regény    |           |") //negyedik sor kiiratasa konzolra
-console.log("| Franz Kafka  | Az átváltozás                     | kisregény | groteszk  |") //otodik sor kiiratasa konzolra
+//1. feladat 3. commit
+/** @type {{author: string, title: string, concepts: string, concepts2?: string}} Fejlec tartalmanak tipusai concepts2 kerdojeles mert nem biztos h van */
+const fejlec = { // fejlec objektumba szervezese 
+    author: "Szerző", //fejlec elso cellaja
+    title: "Mű", //fejlec masodik cellaja
+    concepts: "Fogalmak" //fejlec harmadik cellaja
+}
+/** @type {{author: string, title: string, concepts: string, concepts2?: string}} appolliniare sor tartalmanak tipusai */
+const appolliniareRow = { //appollinaire sor objektumba szervezese
+    author: "Appolliniare", // appolliniare sor elso cellaja
+    title: "A megsebzett galamb és a szökőkút", // appolliniare sor masodik cellaja
+    concepts: "Képvers",  // appolliniare sor harmadik cellaja
+    concepts2: "Emlékezés", // appolliniare negyedik elso cellaja
+}
+/** @type {{author: string, title: string, concepts: string, concepts2?: string}} masik appolliniare sor tartalmanak tipusai */
+const appolliniareSecondRow = {  //masik appollinaire sor objektumba szervezese
+    author: "Appolliniare", // masik appolliniare sor elso cellaja
+    title: "Búcsú", // masik appolliniare sor masodik cellaja
+    concepts: "Avantgárd" // masik appolliniare sor harmadik cellaja
+}
+/** @type {{author: string, title: string, concepts: string, concepts2?: string}} thomas mann sor tartalmanak tipusai */
+const thomasMannRow = { //thomas mann sor objektumba szervezese 
+    author: "Thomas Mann", // thomas mann sor elso cellaja
+    title: "Mario és a varázsló", // thomas mann sor elso cellaja
+    concepts: "Kisregény" // thomas mann sor elso cellaja
+}
+/** @type {{author: string, title: string, concepts: string, concepts2?: string}} franz kafka sor tartalmanak tipusai */
+const franzKafkaRow = { //franz kafka sor objektumba szervezese
+    author: "Franz Kafka", //franz kafka sor elso cellaja
+    title: "A per", //franz kafka sor masodik cellaja
+    concepts: "regény" //franz kafka sor harmadik cellaja
+}
+/** @type {{author: string, title: string, concepts: string, concepts2?: string}} masik franz kafka sor tartalmanak tipusai */
+const franzKafkaSecondRow = { //masik franz kafka sor objektumba szervezese
+    author: "Franz Kafka", //masik franz kafka sor elso cellaja
+    title: "Az átváltozás", //masik franz kafka sor masodik cellaja
+    concepts: "kisregény", //masik franz kafka sor harmadik cellaja
+    concepts2: "groteszk" //masik franz kafka sor negyedik cellaja
+}
 
-//1. feladat 2. commit
-/** @type {string}  fejlecSzerzo valtozo ertekenek tipusa */ 
-const fejlecSzerzo = "Szerző" // fejlec elso cellaja eltarolva valtozoban
-/** @type {string}  fejlecMu valtozo ertekenek tipusa */ 
-const fejlecMu = "Mű" // fejlec masodik cellaja eltarolva valtozoban
-/** @type {string}  fejlecFogalmak valtozo ertekenek tipusa */ 
-const fejlecFogalmak = "Fogalmak" //fejlec harmadik cellaja eltarolva valtozoban
-
-/** @type {string}  appolliniareSorSzerzo valtozo ertekenek tipusa */ 
-const appolliniareSorSzerzo = "Appolliniare" //elso sor  szerzo cellaja eltarolva valtozoban
-/** @type {string}  appolliniareSorMu valtozo ertekenek tipusa */ 
-const appolliniareSorMu = "A megsebzett galamb és a szökőkút" //elso sor mu cellaja eltarolva valtozoban
-/** @type {string}  appolliniareSorFogalmak valtozo ertekenek tipusa */
-const appolliniareSorFogalmak = "Képvers" //elso sor Fogalmak elso cellaja eltarolva egy valtozoban
-/** @type {string}  appolliniareSorFogalmakKetto valtozo ertekenek tipusa */
-const appolliniareSorFogalmakKetto = "emlékezés" //elso sor Fogalmak masodik cellaja eltarolva egy valtozoban
-
-/** @type {string}  appolliniareMaisikSorSzerzo valtozo ertekenek tipusa */
-const appolliniareMasikSorSzerzo = "Appolliniare" // masodik sor szerzo cellaja eltarolva egy valtozoban
-/** @type {string}  appolliniareMasikSorMu valtozo ertekenek tipusa */
-const appolliniareMasikSorMu = "Búcsú" // masodik sor mu cellaja eltarolva egy valtozoban
-/** @type {string}  appolliniareMasikSorFogalmak valtozo ertekenek tipusa */
-const appolliniareMasikSorFogalmak = "avantgárd" // masodik sor fogalmak cellaja eltarolva egy valtozoban
-
-/** @type {string}  thomasMannSorSzerzo valtozo ertekenek tipusa */
-const thomasMannSorSzerzo = "Thomas Mann" // harmadik sor szerzo cellaja eltarolva egy valtozoban
-/** @type {string}  thomasMannSorMu valtozo ertekenek tipusa */
-const thomasMannSorMu = "Mario és a varázsló" // harmadik sor mu cellaja eltarolva egy valtozoban
-/** @type {string}  thomasMannSorFogalmak valtozo ertekenek tipusa */
-const thomasMannSorFogalmak = "Kisregény" // harmadik sor fogalmak cellaja eltarolva egy valtozoban
-
-/** @type {string}  franzKafkaSorSzerzo valtozo ertekenek tipusa */
-const franzKafkaSorSzerzo = "Franz Kafka" //negyedik sor szerzo cellaja eltarolva egy valtozoban
-/** @type {string}  franzKafkaSorMu valtozo ertekenek tipusa */
-const franzKafkaSorMu = "A per" //negyedik sor mu cellaja eltarolva egy valtozoban
-/** @type {string}  franzKafkaSorFogalmak valtozo ertekenek tipusa */
-const franzKafkaSorFogalmak = "regény" //negyedik sor fogalmak cellaja eltarolva egy valtozoban
-
-/** @type {string}  franzKafkaMasikSorSzerzo valtozo ertekenek tipusa */
-const franzKafkaMasikSorSzerzo = "Franz Kafka" //hatodik sor szerzo cellaja eltarolva egy valtozoban
-/** @type {string}  franzKafkaMasikSorMu valtozo ertekenek tipusa */
-const franzKafkaMasikSorMu = "Az átváltozás" //hatodik sor mu cellaja eltarolva egy valtozoban
-/** @type {string}  franzKafkaMasikSorFogalmak valtozo ertekenek tipusa */
-const franzKafkaMasikSorFogalmak = "kisregény" //hatodik sor fogalmak elso cellaja eltarolva egy valtozoban
-/** @type {string}  franzKafkaMasikSorFogalmakKetto valtozo ertekenek tipusa */
-const franzKafkaMasikSorFogalmakKetto = "groteszk" //hatodik sor fogalmak masodik cellaja eltarolva egy valtozoban
-
-/** @type {string}  fejlecEgesz valtozo ertekenek tipusa */
-const fejlecEgesz = fejlecSzerzo +" | "+ fejlecMu+" | "+ fejlecFogalmak+" | " //fejlec valtozoba tarolva
-
-/** @type {string}  appolliniareEgesz valtozo ertekenek tipusa */
-const appolliniareEgesz = appolliniareSorSzerzo+" | "+ appolliniareSorMu+" | "+ appolliniareSorFogalmak+" | "+appolliniareSorFogalmakKetto+" | " // elso sor valtozoba eltarolva
-
-/** @type {string}  appolliniareKettoEgesz valtozo ertekenek tipusa */
-const appolliniareKettoEgesz = appolliniareMasikSorSzerzo+" | "+ appolliniareMasikSorMu+" | "+ appolliniareMasikSorFogalmak+" | "  //masodik sor valtozoba eltarolva
-
-/** @type {string}  thomasMannEgesz valtozo ertekenek tipusa*/
-const thomasMannEgesz = thomasMannSorSzerzo +" | "+ thomasMannSorMu+" | "+ thomasMannSorFogalmak+" | " //harmadik sor valtozoba eltarolva
-
-/** @type {string}  franzKafkaEgesz valtozo ertekenek tipusa*/
-const franzKafkaEgesz = franzKafkaSorSzerzo +" | "+ franzKafkaSorMu+" | "+ franzKafkaSorFogalmak+" | " //negyedik sor valtozoba eltarolva
-
-/** @type {string}  franzKafkaKettoEgesz valtozo ertekenek tipusa*/
-const franzKafkaKettoEgesz = franzKafkaMasikSorSzerzo +" | "+ franzKafkaMasikSorMu+" | "+ franzKafkaMasikSorFogalmak+" | " +franzKafkaMasikSorFogalmakKetto+" | "//otodik sor valtozoba eltarolva
-
-console.log(fejlecEgesz) //fejlec konzolra irasa 
-console.log(appolliniareEgesz) //elso sor konzolra irasa
-console.log(appolliniareKettoEgesz) //masodik sor konzolra irasa
-console.log(thomasMannEgesz) //harmadik sor konzolra irasa
-console.log(franzKafkaEgesz) //negyedik sor konzolra irasa
-console.log(franzKafkaKettoEgesz) //otodik sor konzolra irasa
+console.log(fejlec.author+" | "+fejlec.title+" | "+fejlec.concepts+" | "+" | ") //fejlec sor konzolra kiiratasa
+console.log(appolliniareRow.author+" | "+appolliniareRow.title+" | "+appolliniareRow.concepts+" | "+appolliniareRow.concepts2+" | ") //elso sor konzolra kiiratasa
+console.log(appolliniareSecondRow.author+" | "+appolliniareSecondRow.title+" | "+appolliniareSecondRow.concepts+" | "+" | ") //masodik sor konzolra kiiratasa
+console.log(thomasMannRow.author+" | "+thomasMannRow.title+" | "+thomasMannRow.concepts+" | "+" | ") //harmadik sor konzolra kiiratasa
+console.log(franzKafkaRow.author+" | "+franzKafkaRow.title+" | "+franzKafkaRow.concepts+" | "+" | ") //negyedik sor konzolra kiiratasa
+console.log(franzKafkaSecondRow.author+" | "+franzKafkaSecondRow.title+" | "+franzKafkaSecondRow.concepts+" | "+franzKafkaSecondRow.concepts2+" | ") //otodik sor konzolra kiiratasa
