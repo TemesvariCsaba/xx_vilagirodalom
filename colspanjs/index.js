@@ -1,8 +1,8 @@
 
-//2. feladat 11. commit
-/** @typedef {string} HeaderType fejlec tomb tipusa */
-/** @type {HeaderType[]} A tomb tipusa  */
-const headerArr = ["Szerző", "Mű", "Fogalmak"] //fejlec tombbe szervezve
+//2. feladat 12. commit
+/** 
+/** @type {{name: string, colSpan: number}[]} A tomb tipusa  */
+const headerArr = [{name: "Szerző"},{name: "Mű"} , {name: "Fogalmak" ,colSpan: 2}] //fejlec tulajdonsagokkal
 
 /** @typedef {{author: string, title: string, concepts: string, concepts2?: string}} BodyType A törzs adatait tarolo tomb tipusa */
 /** @type {BodyType[]} a valtozo tipusa*/
@@ -49,7 +49,7 @@ theadJs.appendChild(trFejlec) //Hozzafuzi a fejlechez
 
 /**
  *  fuggveny ami kirendereli a tablazat fejlecet 
- * @param {HeaderType[]} array  tomb amin vegigmegy a ciklus
+ * @param {{name: string, colSpan: number}[]} array  tomb amin vegigmegy a ciklus
  * @param {HTMLTableRowElement} parentRow sor amihez hozzafuzzuk
  * @returns {void} //nincs visszateresi erteke
  */
@@ -58,8 +58,12 @@ function createThead(array, parentRow){ //letrehozza a fejlecet ami egy tombot v
     {   
         /** @type {HTMLTableCellElement} fejlec cellainak tipusa*/
         const thHead = document.createElement("th") //A tablazat fejlecenek letrehozza az i-ik cellajat
-        thHead.innerText = array[i] //feltolti tartalommal
+        thHead.innerText = array[i].name //feltolti tartalommal
         parentRow.appendChild(thHead) //hozzafuzi a fejlec sorhoz
+
+        if(array[i].colSpan == 2){ //ha tobb cellat ivel at a fejlec
+            thHead.colSpan = 2 //oszloposszevonast vegez
+        }
 }
 }
 createThead(headerArr, trFejlec) //fuggveny meghivasa a tombre
