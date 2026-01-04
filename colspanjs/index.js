@@ -1,6 +1,7 @@
 
-//2. feladat 10. commit
-/** @type {string[]} A fejlec tomb tipusa */
+//2. feladat 11. commit
+/** @typedef {string} HeaderType fejlec tomb tipusa */
+/** @type {HeaderType[]} A tomb tipusa  */
 const headerArr = ["Szerző", "Mű", "Fogalmak"] //fejlec tombbe szervezve
 
 /** @typedef {{author: string, title: string, concepts: string, concepts2?: string}} BodyType A törzs adatait tarolo tomb tipusa */
@@ -46,21 +47,22 @@ tableJs.appendChild(theadJs)//hozzafuzi a tablazathoz
 const trFejlec = document.createElement("tr") //A tablazat fejlec sora
 theadJs.appendChild(trFejlec) //Hozzafuzi a fejlechez
 
-/** @type {HTMLTableCellElement} fejlec cellainak tipusa*/
-const thSzerzo = document.createElement("th") //A tablazat fejlecenek elso cellaja
-thSzerzo.innerText = headerArr[0] // A fejlec elso cellajanak tartalma
-trFejlec.appendChild(thSzerzo) //hozzafuzi a fejlec sorhoz
-
-/** @type {HTMLTableCellElement} fejlec cellainak tipusa*/
-const thMuCim = document.createElement("th") //A tablazat fejlecenek masodik cellaja
-thMuCim.innerText = headerArr[1] // A fejlec masodik cellajanak tartalma
-trFejlec.appendChild(thMuCim) //hozzafuzi a fejlec sorhoz
-
-
-/** @type {HTMLTableColElement} fejlec sorainak tipusa*/
-const thFogalmak = document.createElement("th") //A tablazat fejlecenek harmadik cellaja
-thFogalmak.innerText = headerArr[2] // A fejlec harmadik cellajanak tartalma
-trFejlec.appendChild(thFogalmak) //hozzafuzi a fejlec sorhoz
+/**
+ *  fuggveny ami kirendereli a tablazat fejlecet 
+ * @param {HeaderType[]} array  tomb amin vegigmegy a ciklus
+ * @param {HTMLTableRowElement} parentRow sor amihez hozzafuzzuk
+ * @returns {void} //nincs visszateresi erteke
+ */
+function createThead(array, parentRow){ //letrehozza a fejlecet ami egy tombot var parameterkent valamint egy parent sort 
+    for (let i = 0; i <array.length; i++ ) //vegigiteral a tombbon novelve az i erteket
+    {   
+        /** @type {HTMLTableCellElement} fejlec cellainak tipusa*/
+        const thHead = document.createElement("th") //A tablazat fejlecenek letrehozza az i-ik cellajat
+        thHead.innerText = array[i] //feltolti tartalommal
+        parentRow.appendChild(thHead) //hozzafuzi a fejlec sorhoz
+}
+}
+createThead(headerArr, trFejlec) //fuggveny meghivasa a tombre
 
 /** @type {HTMLTableSectionElement} a tablazat torzsenek tipusa */
 const tbodyJs = document.createElement("tbody") //letrehozza a tablazat torzset
