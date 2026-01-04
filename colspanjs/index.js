@@ -1,5 +1,5 @@
 
-//2. feladat 12. commit
+//2. feladat 13. commit
 /** 
 /** @type {{name: string, colSpan: number}[]} A tomb tipusa  */
 const headerArr = [{name: "Szerző"},{name: "Mű"} , {name: "Fogalmak" ,colSpan: 2}] //fejlec tulajdonsagokkal
@@ -74,14 +74,15 @@ tableJs.appendChild(tbodyJs) //hozzafuzi a tablazathoz
 /**
  * eltarolja az egesz ciklust hogy ha tobbszor felhasznalnank akkor kevesebb legyen a kod
  *  @param {BodyType[]} array a parameter tipusa
+ *  @param {HTMLTableSectionElement} tBody // a tablazat torzse
  *  @returns {void} nincs visszateresi erteke a fuggvenynek 
 */
-function createTbody(array){ // bevezetunk egy fuggvenyt ami egy tombot var parameterul
-    tbodyJs.innerHTML = "" //kiuriti a tablazat torzsenek a tartalmat
+function createTbody(array, tBody){ // bevezetunk egy fuggvenyt ami egy tombot es egy torzset var parameterul amihez hozzafuzi a sorokat
+    tBody.innerHTML = "" //kiuriti a tablazat torzsenek a tartalmat
 for(const element of array){ //bejarjuk az adatokat tartalmazo tombot ciklus segitsegevel
     /** @type {HTMLTableRowElement} tablazat soranak a tipusa */
     const trTbody = document.createElement("tr") //letrehozza az adott sort
-    tbodyJs.appendChild(trTbody) //hozzafuzi a sort a torzshoz
+    tBody.appendChild(trTbody) //hozzafuzi a sort a torzshoz
 
     /** @type {HTMLTableColElement} Az oszlop tipusa*/
     const tdAuthor = document.createElement("td") //letrehozza az elso oszlopot
@@ -107,7 +108,7 @@ for(const element of array){ //bejarjuk az adatokat tartalmazo tombot ciklus seg
     }
 }
 }
-createTbody(bodyArr) //meghivjuk a fuggvenyt a bodyArr tombbel mint parameter
+createTbody(bodyArr, tbodyJs) //meghivjuk a fuggvenyt a bodyArr tombbel es tbodyJs tablazattorzzsel mint parameter
 
 /** @type {HTMLButtonElement} egy gombot hozunk letre aminek ez a tipusa*/
 
