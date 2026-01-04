@@ -1,5 +1,5 @@
 
-//1. feladat 8. commit
+//1. feladat 9. commit
 /** @type {string[]} A fejlec tomb tipusa */
 const headerArr = ["Szerző", "Mű", "Fogalmak"] //fejlec tombbe szervezve
 
@@ -75,5 +75,26 @@ testButton.addEventListener("click", function(){ //kattintas eseten meghiv egy e
         concepts: "Új fogalom" //fogalmak oszlop tulajdonsaganak erteke
     }
     bodyArr.push(testRow) //hozzafuzzuk a tombhoz az uj sort
+    createTbody(bodyArr) //fuggveny segitsegevel kiirjuk az ujitott tablazatot a console-ra
+})  
+
+/** @type {HTMLButtonElement} egy gombot hozunk letre aminek ez a tipusa*/
+
+const testButtonDouble = document.createElement("button") //letrehozunk egy gombot
+testButtonDouble.innerText = "Új 2 fogalmas sor  hozzáadása" // megadja a gomb szoveget
+document.body.appendChild(testButtonDouble) //hozzafuzi a gombot a torzshoz
+testButtonDouble.addEventListener("click", function(){ //kattintas eseten meghiv egy esemenykezelot
+    console.log("--------------------------------") //elvalaszto vonal
+    console.log("---------Kattintas utan---------") //atlathatobba teszi a torteneseket
+    console.log("--------------------------------") //elvalaszto vonal
+
+    /** @type {BodyType} uj sor adatait tartalmazo valtozo tipusa */
+    const testRowDouble = { //adatok eltarolasa egy objektumban
+        author: "Új szerző", //szerzo oszlop tuajdonsaganak erteke
+        title: "Új mű", //mu oszlop tulajdonsaganak erteke
+        concepts: "Új fogalom", //fogalmak oszlop tulajdonsaganak erteke
+        concepts2: "Másik új fogalom" //fogalmak masodik tulajdonsaganak erteke
+    }
+    bodyArr.push(testRowDouble) //hozzafuzzuk a tombhoz az uj sort
     createTbody(bodyArr) //fuggveny segitsegevel kiirjuk az ujitott tablazatot a console-ra
 })  
