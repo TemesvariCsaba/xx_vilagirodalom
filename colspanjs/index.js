@@ -1,9 +1,10 @@
 
-//1. feladat 5. commit
+//1. feladat 7. commit
 /** @type {string[]} A fejlec tomb tipusa */
 const headerArr = ["Szerző", "Mű", "Fogalmak"] //fejlec tombbe szervezve
 
-/** @type {{author: string, title: string, concepts: string, concepts2?: string}[]} A törzs adatait tarolo tomb tipusa */
+/** @typedef {{author: string, title: string, concepts: string, concepts2?: string}} BodyType A törzs adatait tarolo tomb tipusa */
+/** @type {BodyType[]} a valtozo tipusa*/
 const bodyArr = [ //Az adattal feltoltott objektumok tombbe szervezezve
     {
         author: "Appolliniare", // appolliniare sor elso cellaja
@@ -33,10 +34,15 @@ const bodyArr = [ //Az adattal feltoltott objektumok tombbe szervezezve
         concepts2: "groteszk" //masik franz kafka sor negyedik cellaja
     }
 ]
+/**
+ * eltarolja az egesz ciklust hogy ha tobbszor felhasznalnank akkor kevesebb legyen a kod
+ *  @param {BodyType[]} array a parameter tipusa
+ *  @returns {void} nincs visszateresi erteke a fuggvenynek 
+*/
+function createTbody(array){ // bevezetunk egy fuggvenyt ami egy tombot var parameterul
+    console.log(headerArr[0]+" | "+headerArr[1]+" | "+headerArr[2]+" | ") //fejlec kiiratasa 0ik elem szero elso elem mu masodik elem fogalmak
 
-console.log(headerArr[0]+" | "+headerArr[1]+" | "+headerArr[2]+" | ") //fejlec kiiratasa 0ik elem szero elso elem mu masodik elem fogalmak
-
-for(const element of bodyArr){ //bejarjuk az adatokat tartalmazo tombot
+for(const element of array){ //bejarjuk az adatokat tartalmazo tombot ciklus segitsegevel
     /** @type {string}  valtozo tipusa */
     let bodyContent = element.author+" | "+element.title+" | " //belerakja a valtozoba a biztos adatokat
 
@@ -49,3 +55,5 @@ for(const element of bodyArr){ //bejarjuk az adatokat tartalmazo tombot
     }
     console.log(bodyContent) //kiirja a tablazatot a console-ra
 }
+}
+createTbody(bodyArr) //meghivjuk a fuggvenyt a bodyArr tombbel mint parameter
