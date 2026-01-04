@@ -1,5 +1,5 @@
 
-//1. feladat 9. commit
+//2. feladat 10. commit
 /** @type {string[]} A fejlec tomb tipusa */
 const headerArr = ["Szerző", "Mű", "Fogalmak"] //fejlec tombbe szervezve
 
@@ -34,26 +34,71 @@ const bodyArr = [ //Az adattal feltoltott objektumok tombbe szervezezve
         concepts2: "groteszk" //masik franz kafka sor negyedik cellaja
     }
 ]
+/** @type {HtmlTableElement} a tablazat tipusa */
+const tableJs = document.createElement("table") //letrehoz egy tablazatot
+document.body.appendChild(tableJs) //hozzafuzi a bodyhoz
+
+/** @type {HTMLTableSectionElement} A tablazat fejlecenek tipusa*/
+const theadJs = document.createElement("thead") //letrehozza a tablazat fejlecet
+tableJs.appendChild(theadJs)//hozzafuzi a tablazathoz
+
+/** @type {HTMLTableRowElement} a fejlec soranak tipusa */
+const trFejlec = document.createElement("tr") //A tablazat fejlec sora
+theadJs.appendChild(trFejlec) //Hozzafuzi a fejlechez
+
+/** @type {HTMLTableCellElement} fejlec cellainak tipusa*/
+const thSzerzo = document.createElement("th") //A tablazat fejlecenek elso cellaja
+thSzerzo.innerText = headerArr[0] // A fejlec elso cellajanak tartalma
+trFejlec.appendChild(thSzerzo) //hozzafuzi a fejlec sorhoz
+
+/** @type {HTMLTableCellElement} fejlec cellainak tipusa*/
+const thMuCim = document.createElement("th") //A tablazat fejlecenek masodik cellaja
+thMuCim.innerText = headerArr[1] // A fejlec masodik cellajanak tartalma
+trFejlec.appendChild(thMuCim) //hozzafuzi a fejlec sorhoz
+
+
+/** @type {HTMLTableColElement} fejlec sorainak tipusa*/
+const thFogalmak = document.createElement("th") //A tablazat fejlecenek harmadik cellaja
+thFogalmak.innerText = headerArr[2] // A fejlec harmadik cellajanak tartalma
+trFejlec.appendChild(thFogalmak) //hozzafuzi a fejlec sorhoz
+
+/** @type {HTMLTableSectionElement} a tablazat torzsenek tipusa */
+const tbodyJs = document.createElement("tbody") //letrehozza a tablazat torzset
+tableJs.appendChild(tbodyJs) //hozzafuzi a tablazathoz
 /**
  * eltarolja az egesz ciklust hogy ha tobbszor felhasznalnank akkor kevesebb legyen a kod
  *  @param {BodyType[]} array a parameter tipusa
  *  @returns {void} nincs visszateresi erteke a fuggvenynek 
 */
 function createTbody(array){ // bevezetunk egy fuggvenyt ami egy tombot var parameterul
-    console.log(headerArr[0]+" | "+headerArr[1]+" | "+headerArr[2]+" | ") //fejlec kiiratasa 0ik elem szero elso elem mu masodik elem fogalmak
-
+    tbodyJs.innerHTML = "" //kiuriti a tablazat torzsenek a tartalmat
 for(const element of array){ //bejarjuk az adatokat tartalmazo tombot ciklus segitsegevel
-    /** @type {string}  valtozo tipusa */
-    let bodyContent = element.author+" | "+element.title+" | " //belerakja a valtozoba a biztos adatokat
+    /** @type {HTMLTableRowElement} tablazat soranak a tipusa */
+    const trTbody = document.createElement("tr") //letrehozza az adott sort
+    tbodyJs.appendChild(trTbody) //hozzafuzi a sort a torzshoz
 
-    if(element.concepts2){ //elagazas ami vizsgalja hogy van e erteke a concepts2-nek
-        bodyContent+= element.concepts+" | "+element.concepts2+" | "  //ha van akkor hozzaadja mindket fogalmak cellat az adott sorhoz
+    /** @type {HTMLTableColElement} Az oszlop tipusa*/
+    const tdAuthor = document.createElement("td") //letrehozza az elso oszlopot
+    tdAuthor.innerText = element.author // Beallitja a sor erteket
+    trTbody.appendChild(tdAuthor) //hozzafuzi a sorhoz az oszlopot
 
-    } 
-    else{ //abban az esetben ha nincs erteke
-        bodyContent+= element.concepts+" | " //csak az elso fogalmak cellat adja hozza ami sornak van
+    /** @type {HTMLTableColElement} Az oszlop tipusa*/
+    const tdTitle = document.createElement("td") //letrehozza a masodik oszlopot
+    tdTitle.innerText = element.title // Beallitja a sor erteket
+    trTbody.appendChild(tdTitle) //hozzafuzi a sorhoz az oszlopot
+
+    /** @type {HTMLTableColElement} Az oszlop tipusa*/
+    const tdConcepts = document.createElement("td") //letrehozza a harmadik oszlopot
+    tdConcepts.innerText = element.concepts // Beallitja a sor erteket
+    trTbody.appendChild(tdConcepts) //hozzafuzi a sorhoz az oszlopot
+
+    if(element.concepts2){ // ha ket fogalom van definialva
+        /** @type {HTMLTableColElement} Az oszlop tipusa*/
+        const tdConceptsTwo = document.createElement("td") //letrehozza a negyedik opcionalis oszlopot
+        tdConceptsTwo.innerText = element.concepts2 // Beallitja a sor erteket
+        trTbody.appendChild(tdConceptsTwo) //hozzafuzi a sorhoz az oszlopot
+
     }
-    console.log(bodyContent) //kiirja a tablazatot a console-ra
 }
 }
 createTbody(bodyArr) //meghivjuk a fuggvenyt a bodyArr tombbel mint parameter
@@ -64,10 +109,6 @@ const testButton = document.createElement("button") //letrehozunk egy gombot
 testButton.innerText = "Új sor hozzáadása" // megadja a gomb szoveget
 document.body.appendChild(testButton) //hozzafuzi a gombot a torzshoz
 testButton.addEventListener("click", function(){ //kattintas eseten meghiv egy esemenykezelot
-    console.log("--------------------------------") //elvalaszto vonal
-    console.log("---------Kattintas utan---------") //atlathatobba teszi a torteneseket
-    console.log("--------------------------------") //elvalaszto vonal
-
     /** @type {BodyType} uj sor adatait tartalmazo valtozo tipusa */
     const testRow = { //adatok eltarolasa egy objektumban
         author: "Új szerző", //szerzo oszlop tuajdonsaganak erteke
@@ -84,10 +125,6 @@ const testButtonDouble = document.createElement("button") //letrehozunk egy gomb
 testButtonDouble.innerText = "Új 2 fogalmas sor  hozzáadása" // megadja a gomb szoveget
 document.body.appendChild(testButtonDouble) //hozzafuzi a gombot a torzshoz
 testButtonDouble.addEventListener("click", function(){ //kattintas eseten meghiv egy esemenykezelot
-    console.log("--------------------------------") //elvalaszto vonal
-    console.log("---------Kattintas utan---------") //atlathatobba teszi a torteneseket
-    console.log("--------------------------------") //elvalaszto vonal
-
     /** @type {BodyType} uj sor adatait tartalmazo valtozo tipusa */
     const testRowDouble = { //adatok eltarolasa egy objektumban
         author: "Új szerző", //szerzo oszlop tuajdonsaganak erteke
