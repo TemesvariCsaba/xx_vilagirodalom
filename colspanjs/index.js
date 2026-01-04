@@ -1,5 +1,5 @@
 
-//1. feladat 7. commit
+//1. feladat 8. commit
 /** @type {string[]} A fejlec tomb tipusa */
 const headerArr = ["Szerző", "Mű", "Fogalmak"] //fejlec tombbe szervezve
 
@@ -57,3 +57,23 @@ for(const element of array){ //bejarjuk az adatokat tartalmazo tombot ciklus seg
 }
 }
 createTbody(bodyArr) //meghivjuk a fuggvenyt a bodyArr tombbel mint parameter
+
+/** @type {HTMLButtonElement} egy gombot hozunk letre aminek ez a tipusa*/
+
+const testButton = document.createElement("button") //letrehozunk egy gombot
+testButton.innerText = "Új sor hozzáadása" // megadja a gomb szoveget
+document.body.appendChild(testButton) //hozzafuzi a gombot a torzshoz
+testButton.addEventListener("click", function(){ //kattintas eseten meghiv egy esemenykezelot
+    console.log("--------------------------------") //elvalaszto vonal
+    console.log("---------Kattintas utan---------") //atlathatobba teszi a torteneseket
+    console.log("--------------------------------") //elvalaszto vonal
+
+    /** @type {BodyType} uj sor adatait tartalmazo valtozo tipusa */
+    const testRow = { //adatok eltarolasa egy objektumban
+        author: "Új szerző", //szerzo oszlop tuajdonsaganak erteke
+        title: "Új mű", //mu oszlop tulajdonsaganak erteke
+        concepts: "Új fogalom" //fogalmak oszlop tulajdonsaganak erteke
+    }
+    bodyArr.push(testRow) //hozzafuzzuk a tombhoz az uj sort
+    createTbody(bodyArr) //fuggveny segitsegevel kiirjuk az ujitott tablazatot a console-ra
+})  
