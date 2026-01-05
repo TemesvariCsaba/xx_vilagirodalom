@@ -23,23 +23,15 @@ const bodyArr = [ // body tartalma egy tombben
         concepts2: "kisregény" // masodik Franz Kafka sor fogalmak tulajdonsaga
     }
 ]
-
-/** @type {string} valtozo tipusa */
-let appolliniareRow = "| "+bodyArr[0].author+" | "+bodyArr[0].title1+" | "+bodyArr[0].concepts1+" | " // beleteszi azokat a tulajdonsagokat a valtozoba amik fixen vannak
-if (bodyArr[0].title2 && bodyArr[0].concepts2){ // ha definialva van a masik cim es fogalmak cella akkor 
-    appolliniareRow+= "\n"+"|_    |"+bodyArr[0].title2+" | "+bodyArr[0].concepts2+" | " //letrehoz egy uj sort es hozzaadja a valtozohoz a tulajdonsagok ertekeit
-}
-/** @type {string} valtozo tipusa */
-let thomasMannRow = "| "+bodyArr[1].author+" | "+bodyArr[1].title1+" | "+bodyArr[1].concepts1+" | " // beleteszi azokat a tulajdonsagokat a valtozoba amik fixen vannak
-if (bodyArr[1].title2 && bodyArr[1].concepts2){ // ha definialva van a masik cim es fogalmak cella akkor 
-    thomasMannRow+= "\n"+"|_    |"+bodyArr[1].title2+" | "+bodyArr[1].concepts2+" | " //letrehoz egy uj sort es hozzaadja a valtozohoz a tulajdonsagok ertekeit
-}
-/** @type {string} valtozo tipusa */
-let franzKafkaRow = "| "+bodyArr[2].author+" | "+bodyArr[2].title1+" | "+bodyArr[2].concepts1+" | " // beleteszi azokat a tulajdonsagokat a valtozoba amik fixen vannak
-if (bodyArr[2].title2 && bodyArr[2].concepts2){ // ha definialva van a masik cim es fogalmak cella akkor 
-    franzKafkaRow+= "\n"+"|_    | "+bodyArr[2].title2+" | "+bodyArr[2].concepts2+" | " //letrehoz egy uj sort es hozzaadja a valtozohoz a tulajdonsagok ertekeit
-}
 console.log("| "+headerArr[0]+" | "+headerArr[1]+" | "+headerArr[2]+" | ") //fejlec sor konzolra kiiratasa
-console.log(appolliniareRow) //elso sor konzolra kiiratasa
-console.log(thomasMannRow) //masodik sor konzolra kiiratasa
-console.log(franzKafkaRow) //harmasik sor konzolra kiiratasa
+for(const element of bodyArr){ //vegigjarom a tombot egy ciklus segitsegevel
+    /** @type {string} valtozo tipusa */
+    let createRows = "| "+element.author+" | "+element.title1+" | "+element.concepts1+" | " // beleteszi azokat a tulajdonsagokat a valtozoba amik fixen vannak
+if (element.title2 && element.concepts2){ // ha definialva van a masik cim es fogalmak cella akkor 
+    createRows+= "\n"+"|_    |"+element.title2+" | "+element.concepts2+" | " //letrehoz egy uj sort es hozzaadja a valtozohoz a tulajdonsagok ertekeit
+}
+console.log(createRows) //tablazat torzsenek a kiiratasa 
+}
+
+
+
