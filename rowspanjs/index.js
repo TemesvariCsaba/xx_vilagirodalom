@@ -24,20 +24,89 @@ const bodyArr = [ // body tartalma egy tombben
         concepts2: "kisregény" // masodik Franz Kafka sor fogalmak tulajdonsaga
     }
 ]
+
+/** @type {HtmlTableElement} a tablazat tipusa */
+const tableJs = document.createElement("table") //letrehoz egy tablazatot
+document.body.appendChild(tableJs) //hozzafuzi a bodyhoz
+
+/** @type {HTMLTableSectionElement} A tablazat fejlecenek tipusa*/
+const theadJs = document.createElement("thead") //letrehozza a tablazat fejlecet
+tableJs.appendChild(theadJs)//hozzafuzi a tablazathoz
+
+/** @type {HTMLTableRowElement} a fejlec soranak tipusa */
+const trFejlec = document.createElement("tr") //A tablazat fejlec sora
+theadJs.appendChild(trFejlec) //Hozzafuzi a fejlechez
+
+/** @type {HTMLTableCellElement} fejlec cellainak tipusa*/
+const thSzerzo = document.createElement("th") //A tablazat fejlecenek elso cellaja
+thSzerzo.innerText = headerArr[0] // A fejlec elso cellajanak tartalma
+trFejlec.appendChild(thSzerzo) //hozzafuzi a fejlec sorhoz
+
+/** @type {HTMLTableCellElement} fejlec cellainak tipusa*/
+const thMuCim = document.createElement("th") //A tablazat fejlecenek masodik cellaja
+thMuCim.innerText = headerArr[1] // A fejlec masodik cellajanak tartalma
+trFejlec.appendChild(thMuCim) //hozzafuzi a fejlec sorhoz
+
+
+/** @type {HTMLTableColElement} fejlec sorainak tipusa*/
+const thFogalmak = document.createElement("th") //A tablazat fejlecenek harmadik cellaja
+thFogalmak.innerText = headerArr[2] // A fejlec harmadik cellajanak tartalma
+trFejlec.appendChild(thFogalmak) //hozzafuzi a fejlec sorhoz
+
+/** @type {HTMLTableSectionElement} a tablazat torzsenek tipusa */
+const tbodyJs = document.createElement("tbody") //letrehozza a tablazat torzset
+tableJs.appendChild(tbodyJs) //hozzafuzi a tablazathoz
+/**
 /**
  *  eltarolja a tablazatot meghivaskor meg kiirja a console-ra 
  * @param {BodyArr[]} array array parameter tipusa
  * @returns {void} nincs visszateresi erteke
  */
 function generateConsoleTable(array) {//tomb parameteru fuggveny
-    console.log("| "+headerArr[0]+" | "+headerArr[1]+" | "+headerArr[2]+" | ") //fejlec sor konzolra kiiratasa
+    tbodyJs.innerHTML = "" //kiuriti a tablazat torzsenek a tartalmat
+
     for(const element of array){ //vegigjarom a tombot egy ciklus segitsegevel
-        /** @type {string} valtozo tipusa */
-        let createRows = "| "+element.author+" | "+element.title1+" | "+element.concepts1+" | " // beleteszi azokat a tulajdonsagokat a valtozoba amik fixen vannak
-    if (element.title2 && element.concepts2){ // ha definialva van a masik cim es fogalmak cella akkor 
-        createRows+= "\n"+"|_    |"+element.title2+" | "+element.concepts2+" | " //letrehoz egy uj sort es hozzaadja a valtozohoz a tulajdonsagok ertekeit
-    }
-    console.log(createRows) //tablazat torzsenek a kiiratasa 
+        
+
+        /** @type {HTMLTableRowElement} tablazat soranak a tipusa */
+        const trTbody = document.createElement("tr") //letrehozza az adott sort
+        tbodyJs.appendChild(trTbody) //hozzafuzi a sort a torzshoz
+
+        /** @type {HTMLTableColElement} Az oszlop tipusa*/
+        const tdAuthor = document.createElement("td") //letrehozza az elso oszlopot
+        tdAuthor.innerText = element.author // Beallitja a sor erteket
+        trTbody.appendChild(tdAuthor) //hozzafuzi a sorhoz az oszlopot
+
+        /** @type {HTMLTableColElement} Az oszlop tipusa*/
+        const tdTitle = document.createElement("td") //letrehozza a masodik oszlopot
+        tdTitle.innerText = element.title1 // Beallitja a sor erteket
+        trTbody.appendChild(tdTitle) //hozzafuzi a sorhoz az oszlopot
+
+         /** @type {HTMLTableColElement} Az oszlop tipusa*/
+        const tdConcepts = document.createElement("td") //letrehozza a harmadik oszlopot
+        tdConcepts.innerText = element.concepts1 // Beallitja a sor erteket
+        trTbody.appendChild(tdConcepts) //hozzafuzi a sorhoz az oszlopot
+
+        if(element.title2 && element.concepts2){ //elagazas vizsgalja hogy definialt e a masik cim es masik fogalmak, ha igen:
+             /** @type {HTMLTableRowElement} tablazat soranak a tipusa */
+            const trRowSpan = document.createElement("tr") //letrehoz egy uj sort
+            tbodyJs.appendChild(trRowSpan) //hozzafuzi a torzshoz
+
+            /** @type {HTMLTableColElement} Az oszlop tipusa*/
+            const tdAuthorRowSpan = document.createElement("td") //letrehozza az elso oszlopot
+            tdAuthorRowSpan.innerText = element.author //erteket ad az elso oszlopnak
+            trRowSpan.appendChild(tdAuthorRowSpan) // hozzafuzi az oszlopot a sorhoz
+
+            /** @type {HTMLTableColElement} Az oszlop tipusa*/
+            const tdTitleTwo = document.createElement("td") //letrehozza a masodik oszlopot
+            tdTitleTwo.innerText = element.title2 //erteket ad a masodik oszlopnak
+            trRowSpan.appendChild(tdTitleTwo) // hozzafuzi az oszlopot a sorhoz
+
+            /** @type {HTMLTableColElement} Az oszlop tipusa*/
+            const tdConceptsTwo = document.createElement("td") //letrehozza a harmadik oszlopot
+            tdConceptsTwo.innerText = element.concepts2 //erteket ad a harmadik oszlopnak
+            trRowSpan.appendChild(tdConceptsTwo)// hozzafuzi az oszlopot a sorhoz
+        }
     }
 }
 generateConsoleTable(bodyArr) //Teljes tablazat kiirasa a console-ra
@@ -49,11 +118,6 @@ const testButton = document.createElement("button") //letrehozunk egy gombot
 testButton.innerText = "Új sor hozzáadása" // megadja a gomb szoveget
 document.body.appendChild(testButton) //hozzafuzi a gombot a torzshoz
 testButton.addEventListener("click", function(){ //kattintas eseten meghiv egy esemenykezelot
-
-    console.log("--------------------------") //elvalaszto vonal hogy lathatobb legyen a valtozas a console-on
-    console.log("------Kattintás után------") //elvalaszto vonal hogy lathatobb legyen a valtozas a console-on
-    console.log("--------------------------") //elvalaszto vonal hogy lathatobb legyen a valtozas a console-on
-
     /** @type {BodyArr} uj sor adatait tartalmazo valtozo tipusa */
     const testRow = { //adatok eltarolasa egy objektumban
         author: "Új szerző", //szerzo oszlop tuajdonsaganak erteke
@@ -70,10 +134,6 @@ const testButtonDouble = document.createElement("button") //letrehozunk egy gomb
 testButtonDouble.innerText = "Új dupla sor hozzáadása" // megadja a gomb szoveget
 document.body.appendChild(testButtonDouble) //hozzafuzi a gombot a torzshoz
 testButtonDouble.addEventListener("click", function(){ //kattintas eseten meghiv egy esemenykezelot
-
-    console.log("--------------------------") //elvalaszto vonal hogy lathatobb legyen a valtozas a console-on
-    console.log("------Kattintás után------") //elvalaszto vonal hogy lathatobb legyen a valtozas a console-on
-    console.log("--------------------------") //elvalaszto vonal hogy lathatobb legyen a valtozas a console-on
 
     /** @type {BodyArr} uj dupla sor adatait tartalmazo valtozo tipusa */
     const testRowDouble = { //adatok eltarolasa egy objektumban
