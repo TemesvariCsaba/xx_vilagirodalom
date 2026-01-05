@@ -33,32 +33,29 @@ document.body.appendChild(tableJs) //hozzafuzi a bodyhoz
 const theadJs = document.createElement("thead") //letrehozza a tablazat fejlecet
 tableJs.appendChild(theadJs)//hozzafuzi a tablazathoz
 
-/** @type {HTMLTableRowElement} a fejlec soranak tipusa */
-const trFejlec = document.createElement("tr") //A tablazat fejlec sora
-theadJs.appendChild(trFejlec) //Hozzafuzi a fejlechez
+/**
+ * letrehozza a tablazat fejlecet
+ * @param {string[]} array // fejlec adatait tartalmazo tomb
+ * @param {HTMLTableSectionElement} fejlec //thead tag 
+ * @returns {void} //nincs visszateresi erteke
+ */
+function createHeader(array, fejlec){ // fuggveny ami egy adattombot es egy thead taget var parameterul
+    for(const headerElement of array){ // vegigjarja a fejlec tombot
 
-/** @type {HTMLTableCellElement} fejlec cellainak tipusa*/
-const thSzerzo = document.createElement("th") //A tablazat fejlecenek elso cellaja
-thSzerzo.innerText = headerArr[0] // A fejlec elso cellajanak tartalma
-trFejlec.appendChild(thSzerzo) //hozzafuzi a fejlec sorhoz
-
-/** @type {HTMLTableCellElement} fejlec cellainak tipusa*/
-const thMuCim = document.createElement("th") //A tablazat fejlecenek masodik cellaja
-thMuCim.innerText = headerArr[1] // A fejlec masodik cellajanak tartalma
-trFejlec.appendChild(thMuCim) //hozzafuzi a fejlec sorhoz
-
-
-/** @type {HTMLTableColElement} fejlec sorainak tipusa*/
-const thFogalmak = document.createElement("th") //A tablazat fejlecenek harmadik cellaja
-thFogalmak.innerText = headerArr[2] // A fejlec harmadik cellajanak tartalma
-trFejlec.appendChild(thFogalmak) //hozzafuzi a fejlec sorhoz
+        /** @type {HTMLTableCellElement} th tipusa */
+        const thHeader = document.createElement("th") //letrehoz egy fejlec cellat
+        thHeader.innerText = headerElement //feltolti adattal
+        fejlec.appendChild(thHeader)//hozzafuzi a thead taghez
+    }
+}
+createHeader(headerArr, theadJs) //fuggveny meghivasa 
 
 /** @type {HTMLTableSectionElement} a tablazat torzsenek tipusa */
 const tbodyJs = document.createElement("tbody") //letrehozza a tablazat torzset
 tableJs.appendChild(tbodyJs) //hozzafuzi a tablazathoz
 /**
 /**
- *  eltarolja a tablazatot meghivaskor meg kiirja a console-ra 
+ *  letrehozza a tablazat torzset
  * @param {BodyArr[]} array array parameter tipusa
  * @returns {void} nincs visszateresi erteke
  */
