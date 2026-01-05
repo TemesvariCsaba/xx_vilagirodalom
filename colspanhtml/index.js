@@ -18,26 +18,10 @@ htmlButton.addEventListener("click", function(){ //rahiv a gombra egy esemenykez
 
     const tbodyHtml = document.getElementById("tablebody") //lekeri a tablazat torzset azonosito alapjan
 
-    /** @type {HTMLTableRowElement} az uj sor amit hozzafuzunk a tablazathoz */
-    const trSimple = document.createElement("tr") //letrehozza az uj sort
-    tbodyHtml.appendChild(trSimple) //hozzacsatolja a sort a torzshoz
-    
-    /** @type {HTMLTableColElement} az elso uj cella*/
-    const tdSzerzoSimple = document.createElement("td") // letrehozza az uj szerzo oszlopot
-    tdSzerzoSimple.innerText = testAddRow.author //feltolti tartalommal
-    trSimple.appendChild(tdSzerzoSimple) //hozzafuzi az oszlopot a sorhoz
-
-    /** @type {HTMLTableColElement} a masodik uj cella*/
-    const tdMuSimple = document.createElement("td") // letrehozza az uj mu oszlopot
-    tdMuSimple.innerText = testAddRow.title //feltolti tartalommal
-    trSimple.appendChild(tdMuSimple) //hozzafuzi az oszlopot a sorhoz
-
-    /** @type {HTMLTableColElement} a harmadik uj cella*/
-    const tdFogalmakSimple = document.createElement("td") // letrehozza az uj fogalmak oszlopot
-    tdFogalmakSimple.innerText = testAddRow.concepts1 //feltolti tartalommal
-    trSimple.appendChild(tdFogalmakSimple) //hozzafuzi az oszlopot a sorhoz
+    generateNewRow(testAddRow, tbodyHtml) //meghivja a fuggvenyt a szimpla soros objektumra
 
 })
+
 
 /** @type {HTMLButtonElement}  uj dupla fogalmas sor hozzaadasa gomb */
 
@@ -54,34 +38,45 @@ htmlButtonDouble.addEventListener("click", function(){ //rahiv a gombra egy esem
             concepts1: "Új fogalom", //fogalmak erteke
             concepts2: "Másik új fogalom" //masik fogalmak erteke
         }
-    
     /** @type {HTMLTableSectionElement} a tablazat torzse*/
-
     const tbodyHtml = document.getElementById("tablebody") //lekeri a tablazat torzset azonosito alapjan
 
-    /** @type {HTMLTableRowElement} az uj sor amit hozzafuzunk a tablazathoz */
-    const trDouble = document.createElement("tr") //letrehozza az uj sort
-    tbodyHtml.appendChild(trDouble) //hozzacsatolja a sort a torzshoz
-    
-    /** @type {HTMLTableColElement} az elso uj cella*/
+    generateNewRow(testAddRowDouble, tbodyHtml) //meghivja a fuggvenyt a dupla fogalmas objektumra
+})
+/**
+ * // legeneralja az uj sort 
+ * @param {RowType} testAddRow // a sort adatait tartalmazo objektum
+ * @param {HTMLTableSectionElement} parentTbody //torzs amihez hozzafuzi az uj sort
+ * @returns {void} //nincs visszateresi erteke
+ */
+function generateNewRow(testAddRow, parentTbody){ // fuggveny egy objektum es egy torzs parameterrel
+    /** @type {HTMLTableRowElement} az uj sor*/ 
+    const trUjRow = document.createElement("tr") //sor letrehozas amihez csatoljuk az uj cellakat
+    parentTbody.appendChild(trUjRow) //hozzacsatolja a sort a parent torzshoz
+
+        /** @type {HTMLTableColElement} az elso uj cella*/
     const tdSzerzoDouble = document.createElement("td") // letrehozza az uj szerzo oszlopot
-    tdSzerzoDouble.innerText = testAddRowDouble.author //feltolti tartalommal
-    trDouble.appendChild(tdSzerzoDouble) //hozzafuzi az oszlopot a sorhoz
+    tdSzerzoDouble.innerText = testAddRow.author //feltolti tartalommal
+    trUjRow.appendChild(tdSzerzoDouble) //hozzafuzi az oszlopot a sorhoz
 
     /** @type {HTMLTableColElement} a masodik uj cella*/
     const tdMuDouble = document.createElement("td") // letrehozza az uj mu oszlopot
-    tdMuDouble.innerText = testAddRowDouble.title //feltolti tartalommal
-    trDouble.appendChild(tdMuDouble) //hozzafuzi az oszlopot a sorhoz
+    tdMuDouble.innerText = testAddRow.title //feltolti tartalommal
+    trUjRow.appendChild(tdMuDouble) //hozzafuzi az oszlopot a sorhoz
 
     /** @type {HTMLTableColElement} a harmadik uj cella*/
     const tdFogalmakDouble = document.createElement("td") // letrehozza az uj fogalmak oszlopot
-    tdFogalmakDouble.innerText = testAddRowDouble.concepts1 //feltolti tartalommal
-    trDouble.appendChild(tdFogalmakDouble) //hozzafuzi az oszlopot a sorhoz
+    tdFogalmakDouble.innerText = testAddRow.concepts1 //feltolti tartalommal
+    trUjRow.appendChild(tdFogalmakDouble) //hozzafuzi az oszlopot a sorhoz
 
-    /** @type {HTMLTableColElement} a negyedik uj cella*/
-    const tdSecondFogalmakDouble = document.createElement("td") // letrehozza a masodik uj fogalmak oszlopot
-    tdSecondFogalmakDouble.innerText = testAddRowDouble.concepts2 //feltolti tartalommal
-    trDouble.appendChild(tdSecondFogalmakDouble) //hozzafuzi az oszlopot a sorhoz
+    if(testAddRow.concepts2){ //ha definialt a masodik fogalom is 
+        /** @type {HTMLTableColElement} a negyedik uj cella*/
+        const tdFogalmakDoubleSecond = document.createElement("td") // letrehozza az uj fogalmak oszlopot
+        tdFogalmakDoubleSecond.innerText = testAddRow.concepts2 //feltolti tartalommal
+        trUjRow.appendChild(tdFogalmakDoubleSecond) //hozzafuzi az oszlopot a sorhoz
 
-
-})
+    }
+    else{ //ha nem definialt
+        tdFogalmakDouble.colSpan = "2" //az elso fogalom ket cellat von egybe
+    }
+}
