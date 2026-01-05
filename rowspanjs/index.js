@@ -42,3 +42,24 @@ function generateConsoleTable(array) {//tomb parameteru fuggveny
 }
 generateConsoleTable(bodyArr) //Teljes tablazat kiirasa a console-ra
 
+
+/** @type {HTMLButtonElement} egy gombot hozunk letre aminek ez a tipusa*/
+
+const testButton = document.createElement("button") //letrehozunk egy gombot
+testButton.innerText = "Új sor hozzáadása" // megadja a gomb szoveget
+document.body.appendChild(testButton) //hozzafuzi a gombot a torzshoz
+testButton.addEventListener("click", function(){ //kattintas eseten meghiv egy esemenykezelot
+
+    console.log("--------------------------") //elvalaszto vonal hogy lathatobb legyen a valtozas a console-on
+    console.log("------Kattintás után------") //elvalaszto vonal hogy lathatobb legyen a valtozas a console-on
+    console.log("--------------------------") //elvalaszto vonal hogy lathatobb legyen a valtozas a console-on
+
+    /** @type {BodyArr} uj sor adatait tartalmazo valtozo tipusa */
+    const testRow = { //adatok eltarolasa egy objektumban
+        author: "Új szerző", //szerzo oszlop tuajdonsaganak erteke
+        title1: "Új mű", //mu oszlop tulajdonsaganak erteke
+        concepts1: "Új fogalom" //fogalmak oszlop tulajdonsaganak erteke
+    }
+    bodyArr.push(testRow) //hozzafuzzuk a tombhoz az uj sort
+    generateConsoleTable(bodyArr) //fuggveny segitsegevel kiirjuk az ujitott tablazatot a console-ra
+})  
