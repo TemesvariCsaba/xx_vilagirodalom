@@ -57,17 +57,18 @@ tableJs.appendChild(tbodyJs) //hozzafuzi a tablazathoz
 /**
  *  letrehozza a tablazat torzset
  * @param {BodyArr[]} array array parameter tipusa
+ * @param {HTMLTableSectionElement} torzs tbody tag
  * @returns {void} nincs visszateresi erteke
  */
-function generateConsoleTable(array) {//tomb parameteru fuggveny
-    tbodyJs.innerHTML = "" //kiuriti a tablazat torzsenek a tartalmat
+function generateTableBody(array, torzs) {//tomb parameteru fuggveny
+    torzs.innerHTML = "" //kiuriti a tablazat torzsenek a tartalmat
 
     for(const element of array){ //vegigjarom a tombot egy ciklus segitsegevel
         
 
         /** @type {HTMLTableRowElement} tablazat soranak a tipusa */
         const trTbody = document.createElement("tr") //letrehozza az adott sort
-        tbodyJs.appendChild(trTbody) //hozzafuzi a sort a torzshoz
+        torzs.appendChild(trTbody) //hozzafuzi a sort a torzshoz
 
         /** @type {HTMLTableColElement} Az oszlop tipusa*/
         const tdAuthor = document.createElement("td") //letrehozza az elso oszlopot
@@ -106,7 +107,7 @@ function generateConsoleTable(array) {//tomb parameteru fuggveny
         }
     }
 }
-generateConsoleTable(bodyArr) //Teljes tablazat kiirasa a console-ra
+generateTableBody(bodyArr, tbodyJs) //Teljes tablazat kiirasa a console-ra
 
 
 /** @type {HTMLButtonElement} egy gombot hozunk letre aminek ez a tipusa*/
@@ -122,7 +123,7 @@ testButton.addEventListener("click", function(){ //kattintas eseten meghiv egy e
         concepts1: "Új fogalom" //fogalmak oszlop tulajdonsaganak erteke
     }
     bodyArr.push(testRow) //hozzafuzzuk a tombhoz az uj sort
-    generateConsoleTable(bodyArr) //fuggveny segitsegevel kiirjuk az ujitott tablazatot a console-ra
+    generateTableBody(bodyArr, tbodyJs) //fuggveny segitsegevel kiirjuk az ujitott tablazatot a console-ra
 })  
 
 /** @type {HTMLButtonElement} egy gombot hozunk letre aminek ez a tipusa*/
@@ -141,5 +142,5 @@ testButtonDouble.addEventListener("click", function(){ //kattintas eseten meghiv
         concepts2: "Másik új mű fogalma" //szerzo masodik sor muvenek a fogalmanak az erteke
     }
     bodyArr.push(testRowDouble) //hozzafuzzuk a tombhoz az uj dupla sort
-    generateConsoleTable(bodyArr) //fuggveny segitsegevel kiirjuk az ujitott tablazatot a console-ra
+    generateTableBody(bodyArr, tbodyJs) //fuggveny segitsegevel kiirjuk az ujitott tablazatot a console-ra
 })  
