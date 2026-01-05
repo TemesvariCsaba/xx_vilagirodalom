@@ -63,3 +63,26 @@ testButton.addEventListener("click", function(){ //kattintas eseten meghiv egy e
     bodyArr.push(testRow) //hozzafuzzuk a tombhoz az uj sort
     generateConsoleTable(bodyArr) //fuggveny segitsegevel kiirjuk az ujitott tablazatot a console-ra
 })  
+
+/** @type {HTMLButtonElement} egy gombot hozunk letre aminek ez a tipusa*/
+
+const testButtonDouble = document.createElement("button") //letrehozunk egy gombot
+testButtonDouble.innerText = "Új dupla sor hozzáadása" // megadja a gomb szoveget
+document.body.appendChild(testButtonDouble) //hozzafuzi a gombot a torzshoz
+testButtonDouble.addEventListener("click", function(){ //kattintas eseten meghiv egy esemenykezelot
+
+    console.log("--------------------------") //elvalaszto vonal hogy lathatobb legyen a valtozas a console-on
+    console.log("------Kattintás után------") //elvalaszto vonal hogy lathatobb legyen a valtozas a console-on
+    console.log("--------------------------") //elvalaszto vonal hogy lathatobb legyen a valtozas a console-on
+
+    /** @type {BodyArr} uj dupla sor adatait tartalmazo valtozo tipusa */
+    const testRowDouble = { //adatok eltarolasa egy objektumban
+        author: "Új szerző", //szerzo oszlop tuajdonsaganak erteke
+        title1: "Új mű", //mu oszlop tulajdonsaganak erteke
+        concepts1: "Új fogalom", //fogalmak oszlop tulajdonsaganak erteke
+        title2: "Másik új mű", //szerzo masodik sor muvenek az erteke
+        concepts2: "Másik új mű fogalma" //szerzo masodik sor muvenek a fogalmanak az erteke
+    }
+    bodyArr.push(testRowDouble) //hozzafuzzuk a tombhoz az uj dupla sort
+    generateConsoleTable(bodyArr) //fuggveny segitsegevel kiirjuk az ujitott tablazatot a console-ra
+})  
