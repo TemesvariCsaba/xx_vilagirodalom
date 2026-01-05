@@ -32,7 +32,7 @@ const franzKafkaRow = { //franz kafka sor objektumba szervezese
 
 console.log(fejlec.author+" | "+fejlec.title1+" | "+fejlec.concepts1+" | ") //fejlec sor konzolra kiiratasa
 console.log(appolliniareRow.author+" | "+appolliniareRow.title1+" | "+appolliniareRow.concepts1+" | ") //elso sor konzolra kiiratasa
-console.log(appolliniareRow.author+" | "+appolliniareRow.title2+" | "+appolliniareRow.concepts2+" | ") //masodik sor konzolra kiiratasa
+console.log("|  | "+appolliniareRow.title2+" | "+appolliniareRow.concepts2+" | ") //masodik sor konzolra kiiratasa
 console.log(thomasMannRow.author+" | "+thomasMannRow.title1+" | "+thomasMannRow.concepts1+" | ") //harmadik sor konzolra kiiratasa
 console.log(franzKafkaRow.author+" | "+franzKafkaRow.title1+" | "+franzKafkaRow.concepts1+" | ") //negyedik sor konzolra kiiratasa
-console.log(franzKafkaRow.author+" | "+franzKafkaRow.title2+" | "+franzKafkaRow.concepts2+" | ") //otodik sor konzolra kiiratasa
+console.log("|  | "+franzKafkaRow.title2+" | "+franzKafkaRow.concepts2+" | ") //otodik sor konzolra kiiratasa
