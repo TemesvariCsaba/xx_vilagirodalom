@@ -24,9 +24,22 @@ const bodyArr = [ // body tartalma egy tombben
     }
 ]
 
+/** @type {string} valtozo tipusa */
+let appolliniareRow = "| "+bodyArr[0].author+" | "+bodyArr[0].title1+" | "+bodyArr[0].concepts1+" | " // beleteszi azokat a tulajdonsagokat a valtozoba amik fixen vannak
+if (bodyArr[0].title2 && bodyArr[0].concepts2){ // ha definialva van a masik cim es fogalmak cella akkor 
+    appolliniareRow+= "\n"+"|_    |"+bodyArr[0].title2+" | "+bodyArr[0].concepts2+" | " //letrehoz egy uj sort es hozzaadja a valtozohoz a tulajdonsagok ertekeit
+}
+/** @type {string} valtozo tipusa */
+let thomasMannRow = "| "+bodyArr[1].author+" | "+bodyArr[1].title1+" | "+bodyArr[1].concepts1+" | " // beleteszi azokat a tulajdonsagokat a valtozoba amik fixen vannak
+if (bodyArr[1].title2 && bodyArr[1].concepts2){ // ha definialva van a masik cim es fogalmak cella akkor 
+    thomasMannRow+= "\n"+"|_    |"+bodyArr[1].title2+" | "+bodyArr[1].concepts2+" | " //letrehoz egy uj sort es hozzaadja a valtozohoz a tulajdonsagok ertekeit
+}
+/** @type {string} valtozo tipusa */
+let franzKafkaRow = "| "+bodyArr[2].author+" | "+bodyArr[2].title1+" | "+bodyArr[2].concepts1+" | " // beleteszi azokat a tulajdonsagokat a valtozoba amik fixen vannak
+if (bodyArr[2].title2 && bodyArr[2].concepts2){ // ha definialva van a masik cim es fogalmak cella akkor 
+    franzKafkaRow+= "\n"+"|_    | "+bodyArr[2].title2+" | "+bodyArr[2].concepts2+" | " //letrehoz egy uj sort es hozzaadja a valtozohoz a tulajdonsagok ertekeit
+}
 console.log("| "+headerArr[0]+" | "+headerArr[1]+" | "+headerArr[2]+" | ") //fejlec sor konzolra kiiratasa
-console.log("| "+bodyArr[0].author+" | "+bodyArr[0].title1+" | "+bodyArr[0].concepts1+" | ") //elso sor konzolra kiiratasa
-console.log("|_ | "+bodyArr[0].title2+" | "+bodyArr[0].concepts2+" | ") //masodik sor konzolra kiiratasa
-console.log("| "+bodyArr[1].author+" | "+bodyArr[1].title1+" | "+bodyArr[1].concepts1+" | ") //harmadik sor konzolra kiiratasa
-console.log("| "+bodyArr[2].author+" | "+bodyArr[2].title1+" | "+bodyArr[2].concepts1+" | ") //negyedik sor konzolra kiiratasa
-console.log("|_  | "+bodyArr[2].title2+" | "+bodyArr[2].concepts2+" | ") //otodik sor konzolra kiiratasa
+console.log(appolliniareRow) //elso sor konzolra kiiratasa
+console.log(thomasMannRow) //masodik sor konzolra kiiratasa
+console.log(franzKafkaRow) //harmasik sor konzolra kiiratasa
