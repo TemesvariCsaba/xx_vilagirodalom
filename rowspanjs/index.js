@@ -1,38 +1,32 @@
+/** @type {string[]} Fejlec tomb tipusa */
+const headerArr = ["Szerző", "Mű", "Fogalmak"] //fejlec tartalma egy tombben
 
-/** @type {{author: string, title1: string, concepts1: string, title2?: string,  concepts2?: string}} Fejlec tartalmanak tipusai title2 es concepts2 kerdojeles mert nem biztos h van */
-const fejlec = { // fejlec objektumba szervezese 
-    author: "Szerző", //fejlec elso cellaja
-    title1: "Mű", //fejlec masodik cellaja
-    concepts1: "Fogalmak" //fejlec harmadik cellaja
-}
-/** @type {{author: string, title1: string, concepts1: string, title2?: string, concepts2?: string}} appolliniare sor tartalmanak tipusai */
-const appolliniareRow = { //appollinaire sor objektumba szervezese
-    author: "Appolliniare", // appolliniare dupla sor nev cellaja
-    title1: "A megsebzett galamb és a szökőkút", // appolliniare elso muvenek a cime
-    concepts1: "Képvers",  // appolliniare elso muvenek a fogalma
-    title2: "Búcsú", // appolliniare masodik muvenek a cime
-    concepts2: "Avantgárd", // appolliniare masodik muvenek a fogalma
-}
+/** @type {{author: string, title1: string, concepts1: string, title2?: string,  concepts2?: string}[]} body tomb tipusa*/
+const bodyArr = [ // body tartalma egy tombben
+    {
+        author: "Appolliniare", // Appolliniare sor szerzo tulajdonsaga
+        title1: "A megsebzett galamb és a szökőkút", // Appolliniare sor mu tulajdonsaga
+        concepts1: "képvers", // Appolliniare sor fogalmak tulajdonsaga
+        title2: "Búcsú", // masodik Appolliniare sor mu tulajdonsaga
+        concepts2: "avantgárd" // masodik Appolliniare sor fogalmak tulajdonsaga
+    },
+    {
+        author: "Thomas Mann", // Thomas Mann sor szerzo tulajdonsaga
+        title1: "Mario és a varázsló", // Thomas Mann sor mu tulajdonsaga
+        concepts1: "kisregény" // Thomas mann sor fogalmak tulajdonsaga
+    },
+    {
+        author: "Franz Kafka", // Franz Kafka sor szerzo tulajdonsaga
+        title1: "A per", // Franz Kafka sor mu tulajdonsaga
+        concepts1: "képvers", // Franz Kafka sor fogalmak tulajdonsaga
+        title2: "Az átvlátozás", //masodik Franz Kafka sor mu tulajdonsaga
+        concepts2: "kisregény" // masodik Franz Kafka sor fogalmak tulajdonsaga
+    }
+]
 
-/** @type {{author: string, title1: string, concepts1: string, title2?:string, concepts2?: string}} thomas mann sor tartalmanak tipusai */
-const thomasMannRow = { //thomas mann sor objektumba szervezese 
-    author: "Thomas Mann", // thomas mann nev cellaja
-    title1: "Mario és a varázsló", // thomas mann muvenek a cime
-    concepts1: "Kisregény" // thomas mann muvenek a fogalma
-}
-
-/** @type {{author: string, title1: string, concepts1: string, title2?:string, concepts2?: string}} franz kafka sor tartalmanak tipusai */
-const franzKafkaRow = { //franz kafka sor objektumba szervezese
-    author: "Franz Kafka", //franz kafka dupla sor nev cellaja
-    title1: "A per", //franz kafka elso muvenek a cime
-    concepts1: "regény", //franz kafka elso muvenek a fogalma
-    title2: "Az átváltozás", //franz kafka masik muvenek a cime
-    concepts2: "kisregény" //franz kafka masik muvenek a fogalma   
-}
-
-console.log(fejlec.author+" | "+fejlec.title1+" | "+fejlec.concepts1+" | ") //fejlec sor konzolra kiiratasa
-console.log(appolliniareRow.author+" | "+appolliniareRow.title1+" | "+appolliniareRow.concepts1+" | ") //elso sor konzolra kiiratasa
-console.log("|  | "+appolliniareRow.title2+" | "+appolliniareRow.concepts2+" | ") //masodik sor konzolra kiiratasa
-console.log(thomasMannRow.author+" | "+thomasMannRow.title1+" | "+thomasMannRow.concepts1+" | ") //harmadik sor konzolra kiiratasa
-console.log(franzKafkaRow.author+" | "+franzKafkaRow.title1+" | "+franzKafkaRow.concepts1+" | ") //negyedik sor konzolra kiiratasa
-console.log("|  | "+franzKafkaRow.title2+" | "+franzKafkaRow.concepts2+" | ") //otodik sor konzolra kiiratasa
+console.log("| "+headerArr[0]+" | "+headerArr[1]+" | "+headerArr[2]+" | ") //fejlec sor konzolra kiiratasa
+console.log("| "+bodyArr[0].author+" | "+bodyArr[0].title1+" | "+bodyArr[0].concepts1+" | ") //elso sor konzolra kiiratasa
+console.log("|_ | "+bodyArr[0].title2+" | "+bodyArr[0].concepts2+" | ") //masodik sor konzolra kiiratasa
+console.log("| "+bodyArr[1].author+" | "+bodyArr[1].title1+" | "+bodyArr[1].concepts1+" | ") //harmadik sor konzolra kiiratasa
+console.log("| "+bodyArr[2].author+" | "+bodyArr[2].title1+" | "+bodyArr[2].concepts1+" | ") //negyedik sor konzolra kiiratasa
+console.log("|_  | "+bodyArr[2].title2+" | "+bodyArr[2].concepts2+" | ") //otodik sor konzolra kiiratasa
