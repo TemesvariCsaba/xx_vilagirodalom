@@ -34,6 +34,22 @@ htmlDoubleButton.addEventListener("click", function(){ // kattintas eseten rahiv
   
 })
 /**
+ * letrehozza az adott cellat
+ * @param {HTMLTableCellElement} cellType fejlec vagy tablazattorzs cella
+ * @param {string} cellContent az adott cella tartalma 
+ * @param {HTMLTableRowElement} parentTr  tr amihez hozzafuzi a cellakat
+ * 
+ * @returns {HTMLTableCellElement} visszateresi erteke egy cella
+ */
+function generateCell(cellType, cellContent, parentTr){ //3 parameter csak igy tudtam megoldani hogy mindket elvarasnak megfeleljen :(
+    /** @type {HTMLTableCellElement} a cella ami letrejon*/
+    const cellTdOrTh = document.createElement(cellType) // letrehozza a cellat
+    cellTdOrTh.innerText = cellContent //megadja a tartalmat
+    parentTr.appendChild(cellTdOrTh) //hozzafuzi a parent sorhoz
+    return cellTdOrTh //visszater a cellaval 
+}
+
+/**
  * // legeneralja az uj sort 
  * @param {RowType} testAddRow // a sort adatait tartalmazo objektum
  * @param {HTMLTableSectionElement} parentTbody //torzs amihez hozzafuzi az uj sort
@@ -43,37 +59,22 @@ function generateNewRow(testAddRow, parentTbody){ //fuggveny ami egy objektumot 
       /**@type {HTMLTableRowElement} az uj sor */
         const testTrow = document.createElement("tr") //letrehoz egy uj sort
         parentTbody.appendChild(testTrow) //hozzafuzi a sort a torzshoz
+        /** @type {HTMLTableCellElement} az uj szerzo cella*/ 
+        const tdSzerzo =  generateCell("td", testAddRow.author, testTrow) //letrehozza a szerzo cellat
+        
+        generateCell("td", testAddRow.title1, testTrow) //letrehozza a mu cellat
 
-        /** @type {HTMLTableColElement} az uj cella*/
-        const testSzerzo = document.createElement("td") // letrehozza a szerzo cellat
-        testSzerzo.innerText = testAddRow.author // beallitja az erteket 
-        testTrow.appendChild(testSzerzo) // hozzafuzi a sorhoz
-
-         /** @type {HTMLTableColElement} az uj cella*/
-        const testMu = document.createElement("td") // letrehozza a mu cellat
-        testMu.innerText = testAddRow.title1 // beallitja az erteket 
-        testTrow.appendChild(testMu) // hozzafuzi a sorhoz
-
-         /** @type {HTMLTableColElement} az uj cella*/
-        const testFogalom = document.createElement("td") // letrehozza a fogalom cellat
-        testFogalom.innerText = testAddRow.concepts1 // beallitja az erteket 
-        testTrow.appendChild(testFogalom) // hozzafuzi a sorhoz
+        generateCell("td", testAddRow.concepts1, testTrow) //letrehozza a fogalmak cellat
 
         if(testAddRow.concepts2&&testAddRow.title2){ // ha definialva van masik muve a szerzonek es annak a fogalma
-            testSzerzo.rowSpan = "2" // a szerzo cella ket sort fog elfoglalni
+            tdSzerzo.rowSpan = 2// a szerzo cella ket sort fog elfoglalni
             /** @type {HTMLTableRowElement}  az uj sor */
             const testTrowDouble = document.createElement("tr") // letrehoz egy uj sort 
             parentTbody.appendChild(testTrowDouble) // hozzafuzi a torzshoz
+            
+            generateCell("td", testAddRow.title2, testTrowDouble) //letrehozza a masik mu cellat
 
-            /** @type {HTMLTableColElement} az uj cella*/
-            const testMuSecond = document.createElement("td") // letrehozza a mu cellat
-            testMuSecond.innerText = testAddRow.title2 // beallitja az erteket 
-            testTrowDouble.appendChild(testMuSecond) // hozzafuzi a sorhoz
-
-            /** @type {HTMLTableColElement} az uj cella*/
-            const testFogalomSecond = document.createElement("td") // letrehozza a fogalom cellat
-            testFogalomSecond.innerText = testAddRow.concepts2 // beallitja az erteket 
-            testTrowDouble.appendChild(testFogalomSecond) // hozzafuzi a sorhoz
+            generateCell("td", testAddRow.concepts2, testTrowDouble) //letrehozza a masik fogalmas
     }
     
 }
