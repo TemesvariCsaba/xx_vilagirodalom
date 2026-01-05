@@ -38,3 +38,50 @@ htmlButton.addEventListener("click", function(){ //rahiv a gombra egy esemenykez
     trSimple.appendChild(tdFogalmakSimple) //hozzafuzi az oszlopot a sorhoz
 
 })
+
+/** @type {HTMLButtonElement}  uj dupla fogalmas sor hozzaadasa gomb */
+
+const htmlButtonDouble = document.getElementById("htmlbuttondouble") //leker egy gombot a html-en megadott idje alapjan
+htmlButtonDouble.addEventListener("click", function(){ //rahiv a gombra egy esemenykezelot ami kattintasra lep akcioba
+    console.log("Kattintottál az új dupla fogalmas sor gombra") // kiirja a console-ra hogy megtortent a kattintas es erzekelte
+
+    /** @type {RowType} az adattomb tartalma*/
+
+    const testAddRowDouble =  //objektum ami tarolja a tulajdonsagokat
+        {
+            author: "Új szerző", // szerzo erteke
+            title: "Új mű", //mu erteke
+            concepts1: "Új fogalom", //fogalmak erteke
+            concepts2: "Másik új fogalom" //masik fogalmak erteke
+        }
+    
+    /** @type {HTMLTableSectionElement} a tablazat torzse*/
+
+    const tbodyHtml = document.getElementById("tablebody") //lekeri a tablazat torzset azonosito alapjan
+
+    /** @type {HTMLTableRowElement} az uj sor amit hozzafuzunk a tablazathoz */
+    const trDouble = document.createElement("tr") //letrehozza az uj sort
+    tbodyHtml.appendChild(trDouble) //hozzacsatolja a sort a torzshoz
+    
+    /** @type {HTMLTableColElement} az elso uj cella*/
+    const tdSzerzoDouble = document.createElement("td") // letrehozza az uj szerzo oszlopot
+    tdSzerzoDouble.innerText = testAddRowDouble.author //feltolti tartalommal
+    trDouble.appendChild(tdSzerzoDouble) //hozzafuzi az oszlopot a sorhoz
+
+    /** @type {HTMLTableColElement} a masodik uj cella*/
+    const tdMuDouble = document.createElement("td") // letrehozza az uj mu oszlopot
+    tdMuDouble.innerText = testAddRowDouble.title //feltolti tartalommal
+    trDouble.appendChild(tdMuDouble) //hozzafuzi az oszlopot a sorhoz
+
+    /** @type {HTMLTableColElement} a harmadik uj cella*/
+    const tdFogalmakDouble = document.createElement("td") // letrehozza az uj fogalmak oszlopot
+    tdFogalmakDouble.innerText = testAddRowDouble.concepts1 //feltolti tartalommal
+    trDouble.appendChild(tdFogalmakDouble) //hozzafuzi az oszlopot a sorhoz
+
+    /** @type {HTMLTableColElement} a negyedik uj cella*/
+    const tdSecondFogalmakDouble = document.createElement("td") // letrehozza a masodik uj fogalmak oszlopot
+    tdSecondFogalmakDouble.innerText = testAddRowDouble.concepts2 //feltolti tartalommal
+    trDouble.appendChild(tdSecondFogalmakDouble) //hozzafuzi az oszlopot a sorhoz
+
+
+})
